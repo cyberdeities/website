@@ -29,6 +29,7 @@ function App() {
           <div className="nav-links">
             <a href="#services">Services</a>
             <a href="#about">About</a>
+            <a href="#why-choose">Why Choose Us</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -39,11 +40,11 @@ function App() {
         // backgroundImage: `linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url(${cyberBg})`
       }}>
         <div className="container">
-          <h1 className="tech-font">Securing Your Digital Future</h1>
-          <p className="subtitle">Advanced Cybersecurity Solutions for the Modern World</p>
+          <h1 className="tech-font">Protecting Bhutan's Digital Frontier</h1>
+          <p className="subtitle">Trusted cybersecurity solutions for businesses and organizations across the Kingdom of Bhutan</p>
           <div className="cta-buttons">
-            <button className="btn btn-primary">Get Started</button>
-            <button className="btn btn-outline">Learn More</button>
+            <button className="btn btn-primary">Secure Your Business</button>
+            <button className="btn btn-outline">Our Services</button>
           </div>
         </div>
       </section>
@@ -53,16 +54,28 @@ function App() {
           <h2 className="tech-font">Our Services</h2>
           <div className="grid grid-3">
             <div className="service-card">
+              <h3>Security Audits & OWASP Assessments</h3>
+              <p>Comprehensive security audits based on OWASP Top 10 vulnerabilities to identify and address critical security gaps in your applications.</p>
+            </div>
+            <div className="service-card">
               <h3>Penetration Testing</h3>
-              <p>Comprehensive security assessments to identify vulnerabilities in your systems.</p>
+              <p>Professional web and mobile application penetration testing to uncover vulnerabilities before malicious actors do.</p>
             </div>
             <div className="service-card">
-              <h3>Incident Response</h3>
-              <p>24/7 emergency response team ready to handle security breaches.</p>
+              <h3>Network & Infrastructure Security</h3>
+              <p>Thorough network and infrastructure security assessments to protect your organization's critical systems and data.</p>
             </div>
             <div className="service-card">
-              <h3>Security Consulting</h3>
-              <p>Expert guidance on implementing robust security measures.</p>
+              <h3>Security Awareness Training</h3>
+              <p>Educational programs to help your team recognize and respond to cyber threats, building your first line of defense.</p>
+            </div>
+            <div className="service-card">
+              <h3>Incident Response Planning</h3>
+              <p>Expert consulting to develop comprehensive incident response plans, ensuring your organization is prepared for security events.</p>
+            </div>
+            <div className="service-card">
+              <h3>Cybersecurity Consulting</h3>
+              <p>Strategic guidance on implementing effective security measures tailored to your business needs and regulatory requirements.</p>
             </div>
           </div>
         </div>
@@ -72,18 +85,59 @@ function App() {
         <div className="container">
           <div className="grid grid-2">
             <div>
-              <h2 className="tech-font">About Us</h2>
-              <p>We are a team of elite security professionals dedicated to protecting your digital assets. With years of experience in cybersecurity, we provide cutting-edge solutions to stay ahead of emerging threats.</p>
+              <h2 className="tech-font">About Cyber Deities</h2>
+              <p><strong>Our Mission:</strong> To safeguard Bhutanese businesses, government institutions, and individuals in the digital age by providing accessible, reliable, and comprehensive cybersecurity services that protect against evolving cyber threats.</p>
+              <p>As a dedicated cybersecurity firm based in Bhutan, we understand the unique challenges facing organizations in our digital landscape. Our team combines international cybersecurity expertise with deep knowledge of the local business environment.</p>
+              <p><strong>Our Vision:</strong> To be the trusted cybersecurity partner that empowers Bhutanese organizations to confidently embrace digital transformation while maintaining the highest standards of security.</p>
             </div>
-            <div className="stats">
-              <div className="stat-item">
-                <h3 className="tech-font neon-text">500+</h3>
-                <p>Successful Projects</p>
+            <div>
+              <h3 className="tech-font">Our Values</h3>
+              <div className="values-list">
+                <div className="value-item">
+                  <h4>Trust & Transparency</h4>
+                  <p>Building lasting relationships through honest communication and reliable service delivery.</p>
+                </div>
+                <div className="value-item">
+                  <h4>Local Expertise</h4>
+                  <p>Understanding Bhutan's unique digital landscape and regulatory environment.</p>
+                </div>
+                <div className="value-item">
+                  <h4>Continuous Learning</h4>
+                  <p>Staying ahead of emerging threats through ongoing education and professional development.</p>
+                </div>
               </div>
-              <div className="stat-item">
-                <h3 className="tech-font neon-text">99.9%</h3>
-                <p>Success Rate</p>
-              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-choose" className="section">
+        <div className="container">
+          <h2 className="tech-font">Why Choose Cyber Deities?</h2>
+          <div className="grid grid-3">
+            <div className="service-card">
+              <h3>Local Knowledge, Global Standards</h3>
+              <p>We understand Bhutan's business environment, regulatory requirements, and cultural context while applying internationally recognized cybersecurity frameworks and best practices.</p>
+            </div>
+            <div className="service-card">
+              <h3>Tailored Solutions</h3>
+              <p>Every organization is unique. We design customized security strategies that fit your specific needs, budget, and risk profile rather than offering one-size-fits-all solutions.</p>
+            </div>
+            <div className="service-card">
+              <h3>Transparent Communication</h3>
+              <p>We explain complex security concepts in clear, understandable terms. No jargon, no confusion—just honest assessments and practical recommendations you can act on.</p>
+            </div>
+            <div className="service-card">
+              <h3>Proactive Partnership</h3>
+              <p>Beyond identifying problems, we work with you to implement sustainable solutions and build long-term security resilience for your organization.</p>
+            </div>
+            <div className="service-card">
+              <h3>Accessible Expertise</h3>
+              <p>Professional cybersecurity services designed to be accessible to Bhutanese businesses of all sizes, from small enterprises to large organizations.</p>
+            </div>
+            <div className="service-card">
+              <h3>Commitment to Excellence</h3>
+              <p>We're invested in Bhutan's digital future. Your security is our priority, and we're committed to delivering reliable, high-quality services that protect what matters most to you.</p>
             </div>
           </div>
         </div>
@@ -91,19 +145,23 @@ function App() {
 
       <section id="contact" className="section">
         <div className="container">
-          <h2 className="tech-font">Contact Us</h2>
+          <h2 className="tech-font">Ready to Secure Your Business?</h2>
+          <p style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
+            Take the first step towards better cybersecurity. Contact us for a consultation and learn how we can help protect your organization.
+          </p>
           <form className="contact-form">
-            <input type="text" placeholder="Name" required />
-            <input type="email" placeholder="Email" required />
-            <textarea placeholder="Message" required></textarea>
-            <button type="submit" className="btn btn-primary">Send Message</button>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="text" placeholder="Organization/Company" />
+            <textarea placeholder="Tell us about your cybersecurity needs and how we can help you..." required></textarea>
+            <button type="submit" className="btn btn-primary">Get Security Consultation</button>
           </form>
         </div>
       </section>
 
       <footer>
         <div className="container">
-          <p>&copy; 2025 SecureBhutan. All rights reserved.</p>
+          <p>&copy; 2025 Cyber Deities. All rights reserved. Protecting Bhutan's digital future.</p>
         </div>
       </footer>
     </div>
