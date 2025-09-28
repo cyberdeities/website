@@ -1,6 +1,141 @@
 import { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import emailjs from '@emailjs/browser'
 import './App.css'
 // import cyberBg from './assets/cyber-bg.jpg'
+
+interface ContactFormData {
+  name: string
+  email: string
+  organization?: string
+  message: string
+}
+
+const EMAILJS_SERVICE_ID = 'service_w0sra4a' 
+const EMAILJS_TEMPLATE_ID = 'template_xypqage'
+const EMAILJS_PUBLIC_KEY = 'aK7JLOSCCoummC8qh'
+
+function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<ContactFormData>()
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Initialize EmailJS (you only need to do this once)
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+
+      // Prepare email data
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        organization: data.organization || 'Not specified',
+        message: data.message,
+        to_email: 'contact@cyberdeities.bt' // Replace with your actual email
+      }
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+      )
+
+      setSubmitStatus('success')
+      reset() // Clear form
+    } catch (error) {
+      console.error('Email send error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <div>
+      {submitStatus === 'success' && (
+        <div className="success-message">
+          <p className="tech-font neon-text">✓ Message sent successfully! We'll get back to you within 24 hours.</p>
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="error-message">
+          <p className="tech-font" style={{ color: 'var(--accent)' }}>
+            ✗ Failed to send message. Please try again or contact us directly.
+          </p>
+        </div>
+      )}
+
+      <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Your Name *"
+            {...register('name', { 
+              required: 'Name is required',
+              minLength: { value: 2, message: 'Name must be at least 2 characters' }
+            })}
+            className={errors.name ? 'error' : ''}
+          />
+          {errors.name && <span className="error-text">{errors.name.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <input
+            type="email"
+            placeholder="Email Address *"
+            {...register('email', { 
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Please enter a valid email address'
+              }
+            })}
+            className={errors.email ? 'error' : ''}
+          />
+          {errors.email && <span className="error-text">{errors.email.message}</span>}
+        </div>
+
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Organization/Company"
+            {...register('organization')}
+          />
+        </div>
+
+        <div className="form-group">
+          <textarea
+            placeholder="Tell us about your cybersecurity needs and how we can help you... *"
+            {...register('message', { 
+              required: 'Message is required',
+              minLength: { value: 10, message: 'Message must be at least 10 characters' }
+            })}
+            className={errors.message ? 'error' : ''}
+          />
+          {errors.message && <span className="error-text">{errors.message.message}</span>}
+        </div>
+
+        <button 
+          type="submit" 
+          className="btn btn-primary"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Sending...' : 'Get Security Consultation'}
+        </button>
+      </form>
+    </div>
+  )
+}
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -149,13 +284,7 @@ function App() {
           <p style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
             Take the first step towards better cybersecurity. Contact us for a consultation and learn how we can help protect your organization.
           </p>
-          <form className="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Email Address" required />
-            <input type="text" placeholder="Organization/Company" />
-            <textarea placeholder="Tell us about your cybersecurity needs and how we can help you..." required></textarea>
-            <button type="submit" className="btn btn-primary">Get Security Consultation</button>
-          </form>
+          <ContactForm />
         </div>
       </section>
 

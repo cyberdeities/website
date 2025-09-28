@@ -158,6 +158,10 @@
   gap: 1rem;
 }
 
+.form-group {
+  position: relative;
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -204,6 +208,50 @@
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.4;
+}
+
+/* Form Error States */
+.contact-form input.error,
+.contact-form textarea.error {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(255, 62, 62, 0.2);
+}
+
+.error-text {
+  color: var(--accent);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.success-message,
+.error-message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.success-message {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid var(--primary);
+}
+
+.error-message {
+  background-color: rgba(255, 62, 62, 0.1);
+  border: 1px solid var(--accent);
+}
+
+/* Disabled button state */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  background-color: var(--primary);
+  box-shadow: none;
 }
 
 footer {
